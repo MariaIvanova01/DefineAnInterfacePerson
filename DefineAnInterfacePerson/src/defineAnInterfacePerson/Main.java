@@ -1,28 +1,36 @@
 package defineAnInterfacePerson;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Class[] citizenInterfaces = Citizen.class.getInterfaces();
-        if (Arrays.asList(citizenInterfaces).contains(Birthable.class)
-                && Arrays.asList(citizenInterfaces).contains(Identifiable.class)) {
-            Method[] methods = Birthable.class.getDeclaredMethods();
-            Method[] methods1 = Identifiable.class.getDeclaredMethods();
-            Scanner scanner = new Scanner(System.in);
-            String name = scanner.nextLine();
-            int age = Integer.parseInt(scanner.nextLine());
-            String id = scanner.nextLine();
-            String birthDate = scanner.nextLine();
-            Identifiable identifiable = new Citizen(name, age, id, birthDate);
-            Birthable birthable = new Citizen(name, age, id, birthDate);
-            System.out.println(methods.length);
-            System.out.println(methods[0].getReturnType().getSimpleName());
-            System.out.println(methods1.length);
-            System.out.println(methods1[0].getReturnType().getSimpleName());
+        Scanner scan = new Scanner(System.in);
+
+        List<Birthable> birthables = new ArrayList<>();
+
+        while (true){
+            String[] input = scan.nextLine().split(" ");
+
+            if (input[0].equals("End")){
+                break;
+            }
+
+            Birthable birthable = input.length == 3
+                    ? new Pet(input[1],input[2])
+                    : new Citizen(input[1],Integer.parseInt(input[2]),input[3],input[4]);
+
+
+            birthables.add(birthable);
         }
+        String year = scan.nextLine();
+
+        birthables.stream().forEach(birthable -> {
+            if(birthable.getBirthDate().contains(year)){
+                System.out.println(birthable.getBirthDate());
+            }
+        });
     }
 }
