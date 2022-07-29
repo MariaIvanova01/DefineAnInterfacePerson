@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        
+        //this code was given to test the program
+        
         Class[] citizenInterfaces = Citizen.class.getInterfaces();
         if (Arrays.asList(citizenInterfaces).contains(Birthable.class)
                 && Arrays.asList(citizenInterfaces).contains(Identifiable.class)) {
