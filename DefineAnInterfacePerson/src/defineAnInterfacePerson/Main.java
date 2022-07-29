@@ -1,36 +1,43 @@
 package defineAnInterfacePerson;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        List<Birthable> birthables = new ArrayList<>();
+        int numOfPeople = Integer.parseInt(scan.nextLine());
 
-        while (true){
+        Map<String,Buyer> buyers = new HashMap<>();
+
+        for (int i = 0; i < numOfPeople; i++) {
             String[] input = scan.nextLine().split(" ");
+            String name = input[0];
+            Buyer buyer;
+            if (input.length == 3){
+               buyer = new Rebel(name);
+            }else{
+                buyer = new Citizen(name);
+            }
+            buyers.put(name,buyer);
+        }
+        while (true){
+            String buyersName = scan.nextLine();
 
-            if (input[0].equals("End")){
+            if (buyersName.equals("End")){
                 break;
             }
 
-            Birthable birthable = input.length == 3
-                    ? new Pet(input[1],input[2])
-                    : new Citizen(input[1],Integer.parseInt(input[2]),input[3],input[4]);
+            Buyer buyer = buyers.get(buyersName);
 
-
-            birthables.add(birthable);
-        }
-        String year = scan.nextLine();
-
-        birthables.stream().forEach(birthable -> {
-            if(birthable.getBirthDate().contains(year)){
-                System.out.println(birthable.getBirthDate());
+            if (buyer != null){
+                buyer.buyFood();
             }
-        });
+        }
+
+        int totalFood = buyers.values().stream().mapToInt(Buyer::getFood).sum();
+        System.out.println(totalFood);
+
     }
 }
