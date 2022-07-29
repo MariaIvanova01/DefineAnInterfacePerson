@@ -2,10 +2,16 @@
 
 Define an interface Person with methods getName and getAge. Define a class Citizen which implements Person and has a constructor which takes a String name and an int age.
 
+![image](https://user-images.githubusercontent.com/81368587/181784265-c7417c23-223f-4495-88d6-78448d9e08e5.png)
+
+
 For MultipleImplementationBranch
 ----------------------------------------
 
 Using the code from the previous task, define an interface Identifiable with a String method getId and an interface Birthable with a String method getBirthDate and implement them in the Citizen class. Rewrite the Citizen constructor to accept the new parameters.
+
+![image](https://user-images.githubusercontent.com/81368587/181784353-a7143594-07a0-4327-96bb-734d2b3f2ee4.png)
+
 
 
 Input  |	Output
@@ -23,6 +29,9 @@ It is a well-known fact that people celebrate birthdays, it is also known that s
 You will receive from the console an unknown amount of lines until the command "End" is received,  each line will contain information in one of the following formats "Citizen {name} {age} {id} {birthdate}" for citizens, 
 
 "Robot {model} {id}" for robots or "Pet {name} {birthdate}" for pets. After the end command on the next line, you will receive a single number representing a specific year, your task is to print all birthdates (of both citizens and pets) in that year in the format "{day}/{month}/{year}" (the order of printing doesn’t matter).
+
+![image](https://user-images.githubusercontent.com/81368587/181784491-023ff8bd-0047-4855-8abe-0d0c11887310.png)
+
 
 Input | Output
 -----|-----------
