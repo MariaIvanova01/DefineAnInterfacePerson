@@ -25,11 +25,11 @@ public class Citizen implements Person,Birthable,Identifiable{
 
     @Override
     public String getBirthDate() {
-        return null;
+        return birthDate;
     }
 
     @Override
     public String getId() {
-        return null;
+        return id;
     }
 }
